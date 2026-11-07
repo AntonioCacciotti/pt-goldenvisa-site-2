@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://wonderportugal.com/sitemap.xml
