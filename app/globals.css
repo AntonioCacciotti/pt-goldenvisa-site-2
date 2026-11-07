@@ -10,8 +10,8 @@
   --color-terracotta-btn: #b4552f;
   --color-terracotta-btn-hover: #9a4626;
   --color-ink: #1d2b33;
-  --font-serif: var(--font-fraunces), Georgia, serif;
-  --font-sans: var(--font-inter), Inter, system-ui, sans-serif;
+  --font-serif: "Fraunces Variable", Georgia, serif;
+  --font-sans: "Inter Variable", Inter, system-ui, sans-serif;
 }
 
 html { scroll-behavior: smooth; }
