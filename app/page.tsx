@@ -6,6 +6,7 @@ import { getPosts } from "@/lib/posts";
 import PostCard from "@/components/PostCard";
 import SignupBand from "@/components/SignupBand";
 import Azulejo from "@/components/Azulejo";
+import { InvestIcon, VisaIcon, DiscoverIcon } from "@/components/StepIcons";
 import { PARTNER_NAME } from "@/lib/config";
 
 export const metadata: Metadata = {
@@ -28,24 +29,37 @@ const why = [
   { i: Euro, t: "Uses the euro (since 2002)." },
 ];
 
+const heroIcons = [InvestIcon, VisaIcon, DiscoverIcon];
+
 export default function Home() {
   const featured = getPosts().filter((p) => p.featured);
   return (
     <>
       {/* 4.1 Hero */}
-      <section className="on-dark relative flex h-[100svh] min-h-[600px] w-full flex-col justify-end overflow-hidden bg-atlantic-deep">
+      <section className="on-dark relative flex min-h-[100svh] w-full flex-col justify-end overflow-hidden bg-atlantic-deep">
         {/* Photo: Praia da Marinha, Algarve (public domain, Wikimedia Commons). Sky stays at the top so the header links sit on it. */}
         <Image src="/images/hero-praia-da-marinha.jpg" alt="Golden limestone cliffs above a turquoise bay on the Algarve coast, under a blue sky" fill priority sizes="100vw" className="object-cover object-top" />
         <div aria-hidden="true" className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-atlantic-deep/60 to-transparent" />
         <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-[75%] bg-gradient-to-t from-atlantic-deep/90 via-atlantic-deep/70 to-transparent" />
-        <div className="relative mx-auto w-full max-w-6xl px-5 pb-14 text-white md:pb-20">
-          <h1 className="max-w-3xl text-5xl md:text-7xl">Discover the Beauty of Portugal with a Golden Visa</h1>
-          <p className="mt-6 max-w-2xl text-xl md:text-2xl">Step 1: Golden Visa. Step 2: Art, entertainment, nature, beauty, and more.</p>
+        <div className="relative mx-auto w-full max-w-6xl px-5 pb-8 pt-28 text-white md:pb-10">
+          <h1 className="max-w-3xl text-5xl md:text-6xl">Discover the Beauty of Portugal with a Golden Visa</h1>
+          <p className="mt-4 max-w-2xl text-xl md:text-2xl">Step 1: Golden Visa. Step 2: Art, entertainment, nature, beauty, and more.</p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link href="/get-started" className="btn">Get Started</Link>
             <Link href="/discover-portugal" className="btn btn-outline">Discover Portugal</Link>
           </div>
           <p className="mt-5 text-sm italic">In partnership with {PARTNER_NAME}</p>
+          <ol className="mt-8 grid gap-4 md:grid-cols-3" aria-label="How it works">
+            {steps.map((s, n) => {
+              const Icon = heroIcons[n];
+              return (
+                <li key={s.b} className="rounded-2xl border border-white/30 bg-atlantic-deep/65 p-5 text-center shadow-lg backdrop-blur-md">
+                  <span className="mx-auto flex h-[88px] w-[88px] items-center justify-center rounded-full bg-white/20 ring-1 ring-white/40 text-white"><Icon /></span>
+                  <p className="mt-3 text-base leading-snug"><strong className="font-semibold">{s.b}</strong>{s.r}</p>
+                </li>
+              );
+            })}
+          </ol>
         </div>
       </section>
       <Azulejo />
