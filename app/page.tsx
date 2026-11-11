@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Landmark, Globe2, ShieldCheck, Languages, MapPinned, Euro, HandCoins, PlaneTakeoff, Compass } from "lucide-react";
 import { getPosts } from "@/lib/posts";
 import PostCard from "@/components/PostCard";
@@ -32,13 +33,15 @@ export default function Home() {
   return (
     <>
       {/* 4.1 Hero */}
-      <section className="on-dark relative bg-atlantic-deep">
-        <div role="img" aria-label="Placeholder for full-width photograph of Portugal" className="absolute inset-0 bg-gradient-to-br from-atlantic to-atlantic-deep" />
-        <p className="absolute bottom-3 right-3 z-10 border border-dashed border-white px-2 py-0.5 text-xs text-white">[TO BE PROVIDED: full-width photo of Portugal]</p>
-        <div className="relative mx-auto max-w-6xl px-5 py-24 md:py-36">
+      <section className="on-dark relative flex h-[100svh] min-h-[600px] w-full flex-col justify-end overflow-hidden bg-atlantic-deep">
+        {/* Photo: Praia da Marinha, Algarve (public domain, Wikimedia Commons). Sky stays at the top so the header links sit on it. */}
+        <Image src="/images/hero-praia-da-marinha.jpg" alt="Golden limestone cliffs above a turquoise bay on the Algarve coast, under a blue sky" fill priority sizes="100vw" className="object-cover object-top" />
+        <div aria-hidden="true" className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-atlantic-deep/60 to-transparent" />
+        <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-[75%] bg-gradient-to-t from-atlantic-deep/90 via-atlantic-deep/70 to-transparent" />
+        <div className="relative mx-auto w-full max-w-6xl px-5 pb-14 text-white md:pb-20">
           <h1 className="max-w-3xl text-5xl md:text-7xl">Discover the Beauty of Portugal with a Golden Visa</h1>
           <p className="mt-6 max-w-2xl text-xl md:text-2xl">Step 1: Golden Visa. Step 2: Art, entertainment, nature, beauty, and more.</p>
-          <div className="mt-10 flex flex-wrap gap-4">
+          <div className="mt-8 flex flex-wrap gap-4">
             <Link href="/get-started" className="btn">Get Started</Link>
             <Link href="/discover-portugal" className="btn btn-outline">Discover Portugal</Link>
           </div>
